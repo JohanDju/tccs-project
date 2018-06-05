@@ -2,10 +2,11 @@
   <v-container fluid grid-list-lg>
     <v-layout row wrap>
       <v-flex v-for="feed in feeds" :key="feed.id" xs12 md6 offset-md3>
-        <v-card >
-          <v-card-media :src="feed.image" height="200" />
-          <v-card-title primary-title class="text-xs-left">{{ feed.text }}</v-card-title>
-        </v-card>
+        <ListItem
+          :image = feed.image
+          :text=feed.text
+          :datetime=feed.datetime
+        />
       </v-flex>
     </v-layout>
   </v-container>
@@ -13,8 +14,10 @@
 
 
 <script>
+import ListItem from './ListItem';
 export default {
   name: 'List',
+  components: { ListItem },
   computed: {
     feeds() {
       return [
